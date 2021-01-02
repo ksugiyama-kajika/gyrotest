@@ -1,36 +1,3 @@
-function ClickRequestDeviceSensor() {
-  // ユーザーに「許可」を求めるダイアログを表示
-  deviceOrientationEvent.requestPermisson().then(function(response) {
-    if (response === 'granted') {
-      // 許可された場合のみイベントハンドラを追加できる
-      window.addEventListener("deviceorientation", deviceOrientation);
-      // 画面上部のボタンを消す
-      $('#sensorrequest').css('display', 'none');
-    }
-  }).catch(function(e) {
-    console.log(e);
-  });
-}
-
-// DeviceOrientationEvent オブジェクトが有効な環境か？をチェック
-if(window.DeviceOrientationEvent) {
-  // iOS13以上であればDeviceOrientationEvent.requestPermission関数が定義されているのでここで条件分岐
-  if (DeviceOrientationEvento.requestPermission && typeof
-  DeviceOrientationEvent.requestPermission === 'function') {
-    // iOS13以上の場合
-    // 画面上部に「センサーの有効化：ボタンを追加
-    var banner = '<div style="z-index: 1; position: absolute; width: 100%; background-color: rgb(0, 0, 0);"
-    onclick="ClickRequestDeviceSensor();" id="sensorrequest"><p style="color: rgb(0, 0, 255);">センサーの有効化</p></div>';
-    $('body').prepend(banner);
-  } else {
-    // AndroidまたはiOS13未満の場合
-    // DeviceOrientationEventオブジェクトが有効な場合のみ
-    deviceorientationイベント発生時にdeviceOrientation関数がハンドリングするよう登録
-    window.addEventListener("deviceorientation", deviceOrientation);
-  }
-}
-
-
   var ball   = document.querySelector('.ball');
   var garden = document.querySelector('.garden');
   var output = document.querySelector('.output');
